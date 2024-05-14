@@ -1,8 +1,9 @@
 import {all, call, spawn} from 'redux-saga/effects';
 import {incrementAsync, incrementBuf} from './sagas/increment';
+import {addDevice} from './sagas/devices';
 
 export function* rootSaga() {
-  const sagas = [incrementAsync, incrementBuf];
+  const sagas = [incrementAsync, incrementBuf, addDevice];
 
   yield all(
     sagas.map(saga =>

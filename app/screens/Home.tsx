@@ -1,23 +1,60 @@
-import React from 'react';
-import {Button, StyleSheet, View} from 'react-native';
-import {Header} from 'react-native/Libraries/NewAppScreen';
-import {RootStackScreenProps} from './types';
+import React, {useState} from 'react';
+import {StyleSheet, TouchableOpacity, View, Text, FlatList, ListRenderItem} from 'react-native';
+import {RootStackScreenProps, Device, DeviceType} from './types';
+import {Button} from '../components/Button';
 
 export const Home = (props: RootStackScreenProps<'Home'>) => {
+  const [device, setDevice] = useState<Device>({id: '', type: DeviceType.NoType, name: ''});
+
+  const devices = [
+    {
+      id: '01',
+      type: DeviceType.HSV,
+      name: '',
+    },
+    {
+      id: '02',
+      type: DeviceType.Switch,
+      name: '',
+    }
+  ];
+  
+  const Item: ListRenderItem<Device> = ({ item }) => (
+    <TouchableOpacity
+      style={styles.deviceItem}
+      onPress={() => setDevice(item)}
+    >
+      <Text style={[
+        item.id == device.id && { color: 'blue' }
+      ]}>{item.type}</Text>
+    </TouchableOpacity>
+  );
+
   return (
     <View>
-      <Header />
-      <View style={styles.container}>
+      <View>
+        <FlatList
+          style={styles.devicesContainer}
+          data={devices}
+          renderItem={Item}
+          keyExtractor={item => item.id}
+        />
         <Button
-          title="Go to counter"
-          onPress={() => props.navigation.navigate('Counter')}
+          onPress={async () => props.navigation.navigate('Device', device)}
+          disabled={!device.id}
+          text={'Add device'}
         />
       </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
+  devicesContainer: {
+    height: '90%'
+  },
+  deviceItem: {
+    borderBottomColor: 'lightgrey',
+    borderBottomWidth: .5,
+    padding: 20
   },
 });

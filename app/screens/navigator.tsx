@@ -1,7 +1,7 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootStackParamList} from './types';
-import {Counter} from './Counter';
+import {Device} from './Device';
 import {NavigationContainer} from '@react-navigation/native';
 import {navigationRef, useBackButtonHandler} from './navigation-utilities';
 import {Home} from './Home';
@@ -16,7 +16,7 @@ const exitRoutes = ['Home'];
 function AppStack() {
   return (
     <RootStack.Navigator initialRouteName="Home">
-      <RootStack.Screen name="Counter" component={Counter} />
+      <RootStack.Screen name="Device" component={Device} />
       <RootStack.Screen name="Home" component={Home} />
     </RootStack.Navigator>
   );

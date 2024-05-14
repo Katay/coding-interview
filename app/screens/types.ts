@@ -1,7 +1,20 @@
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
+export enum DeviceType {
+  HSV,
+  Switch,
+  NoType
+}
+
+export type Device = {
+  id: string
+  type: DeviceType,
+  name: string
+};
+
 export type RootStackParamList = {
   Counter: undefined;
+  Device: Device;
   Home: undefined;
 };
 

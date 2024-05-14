@@ -10,11 +10,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "@meshle/meshle-typebase": "^1.1.2",
+    "@meshle/meshle-typebase": "file:../../../Downloads/@meshle_meshle-typebase-1.1.2.tgz",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "@reduxjs/toolkit": "^2.2.3",
     "buffer": "^6.0.3",
+    "pod-install": "^0.2.2",
     "react": "18.2.0",
     "react-native": "0.74.0",
     "react-native-safe-area-context": "^4.10.1",
